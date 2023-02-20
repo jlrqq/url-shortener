@@ -14,8 +14,6 @@ connection.connect(function(err) {
   console.log("Database is connected!");
 });
 
-mysql://bcd501d7fa1cba:f0449516@us-cdbr-east-06.cleardb.net/heroku_34ac065506ec321?reconnect=true
-
 // const db = new sqlite3.Database('./test.db', (err) => {
 //   if (err) {
 //     console.error(err.message);
