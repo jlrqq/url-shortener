@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Box, Grid, Alert } from '@mui/material';
+import { Box, Grid, Alert, Link } from '@mui/material';
 import TextFields from './components/inputField';
 import Buttons from './components/button';
 import Typed from 'typed.js';
@@ -43,6 +43,9 @@ function App() {
   const [url, setURL] = useState(false);
   
   const [text, setText] = useState('');
+  const [shortCode, setShortcode] = useState(null);
+  const [newUrl, setNewUrl] = useState('');
+  const [oldUrl, setOldUrl] = useState('');
 
   const handleChange = (event) => {
     setText(event.target.value);
@@ -56,16 +59,38 @@ function App() {
     })
     .then(function (response) {
       console.log(response);
+      if (response.status === 200) {
+        setURL(true);
+        setShortcode(response.data.shortCode);
+        setNewUrl(response.data.shortUrl)
+      }
     })
     .catch(function (error) {
       console.log(error);
     });
   };
 
+  const handleUrl = async (shortCode) => {
+
+    try {
+      const response = await axios.get(`http://localhost:5000/${shortCode}`);
+      console.log(response);
+      if (response.status === 200) {
+        console.log(response.data.longUrl);
+        setOldUrl(response.data.longUrl);
+        window.open(response.data.longUrl, '_blank');
+        console.log(oldUrl);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["Welcome to Cut Link!"], // Strings to display
+      strings: ["Welcome to Cut Link!", "Cut Link helps to shorten your links!", "Try it!"], // Strings to display
       startDelay: 300,
       typeSpeed: 100,
       backSpeed: 100,
@@ -92,7 +117,7 @@ function App() {
           <TextFields value={text} handleChange={handleChange}></TextFields>
         </Grid>
         { url ? <Grid item xs={12}>
-          <Alert onClose={() => {}} sx = {{ mx: 5 }}>The cut link is ____ — check it out!</Alert>
+          <Alert onClose={() => {}} sx = {{ mx: 5 }}>The cut link is <Link href="#" target='_blank' rel="noopener noreferrer" onClick={() => handleUrl(shortCode)}>{newUrl}</Link> — check it out!</Alert>
         </Grid>  : null }
         <Grid item xs={12}>
           <Buttons text="Submit" handleClick={handleClick}></Buttons>

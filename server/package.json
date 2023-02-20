@@ -6,5 +6,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.1.2",
     "sql": "^0.78.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0"
   }
 }

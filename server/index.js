@@ -27,7 +27,7 @@ app.post('/shorten', (req, res) => {
         } else {
             console.log('URL inserted into database:', result);
             // Return the short code to the client
-            res.send( { "shortUrl": `http://localhost:3000/${shortCode}` } );
+            res.send( { "shortUrl": `cutlink.com/${shortCode}`, 'shortCode': shortCode } );
         }
     });
 });
@@ -47,12 +47,13 @@ app.get('/:shortCode', (req, res) => {
         res.status(404).send('URL Not Found');
       } else {
         console.log(result);
-        res.redirect(result[0].long_url);
+        // res.redirect(result[0].long_url);
+        res.send( { "longUrl": result[0].long_url } )
       }
     });
   });
   
 
 app.listen(5000, () => {
-  console.log('App listening on port 5000');
+    console.log('App listening on port 5000');
 });
