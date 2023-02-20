@@ -5,12 +5,20 @@ var connection = mysql.createConnection({
   user: "root",
   password: "root",
   port: 8889,
-  database: 'url_shortener'
+  database: process.env.NODE_ENV === 'test' ? 'test_database' : 'url_shortener'
 });
 
 connection.connect(function(err) {
   if (err) throw err;
   console.log("Database is connected!");
 });
+
+
+// const db = new sqlite3.Database('./test.db', (err) => {
+//   if (err) {
+//     console.error(err.message);
+//   }
+//   console.log('Connected to the test database.');
+// });
 
 module.exports = connection;

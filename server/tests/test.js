@@ -1,9 +1,12 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../index');
+const sqlite3 = require('sqlite3').verbose();
+process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp);
 chai.should();
+
 
 describe('Shorten URL API', () => {
 
