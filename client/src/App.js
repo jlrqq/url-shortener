@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { Box, Grid, Alert } from '@mui/material';
 import TextFields from './components/inputField';
 import Buttons from './components/button';
@@ -49,6 +50,16 @@ function App() {
 
   const handleClick = () => {
     console.log(text);
+
+    axios.post('http://localhost:5000/shorten', {
+      url: text,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   };
 
 
