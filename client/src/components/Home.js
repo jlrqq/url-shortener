@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Box, Grid, Alert, Link } from '@mui/material';
-import TextFields from './components/inputField';
-import Buttons from './components/button';
+import TextFields from './inputField';
+import Buttons from './button';
 import Typed from 'typed.js';
 
 const backgroundStyles = {
