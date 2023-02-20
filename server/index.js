@@ -65,6 +65,6 @@ app.get('/:shortCode', (req, res) => {
   });
   
 
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT || PORT, '0.0.0.0', () => {
     console.log('App listening on port 5000');
 });
