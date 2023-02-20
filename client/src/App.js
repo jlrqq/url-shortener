@@ -1,7 +1,6 @@
 import './App.css';
-import { useEffect, useRef } from 'react';
-import { Box } from '@mui/system';
-import Grid from '@mui/material/Grid';
+import { useState, useEffect, useRef } from 'react';
+import { Box, Grid, Alert } from '@mui/material';
 import TextFields from './components/inputField';
 import Buttons from './components/button';
 import Typed from 'typed.js';
@@ -40,6 +39,18 @@ const boxStyles = {
 function App() {
 
   const el = useRef(null);
+  const [url, setURL] = useState(false);
+  
+  const [text, setText] = useState('');
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  };
+
+  const handleClick = () => {
+    console.log(text);
+  };
+
 
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -67,10 +78,13 @@ function App() {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <TextFields></TextFields>
+          <TextFields value={text} handleChange={handleChange}></TextFields>
         </Grid>
+        { url ? <Grid item xs={12}>
+          <Alert onClose={() => {}} sx = {{ mx: 5 }}>The cut link is ____ — check it out!</Alert>
+        </Grid>  : null }
         <Grid item xs={12}>
-          <Buttons></Buttons>
+          <Buttons text="Submit" handleClick={handleClick}></Buttons>
         </Grid>
       </Grid>
     </div>

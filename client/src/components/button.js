@@ -1,11 +1,8 @@
 import Button from '@mui/material/Button';
 
-const shortenURL = () => {
-    
-}
+export default function Buttons(props) {
 
-export default function Buttons() {
-  return (
-    <Button variant="contained" onClick={shortenURL} sx={{ mx: 5 }}>Shorten URL</Button>
-  );
+    return (
+        <Button variant="contained" onClick={props.handleClick} sx={{ mx: 5 }}>Shorten URL</Button>
+    );
 }

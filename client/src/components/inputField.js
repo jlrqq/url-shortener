@@ -1,11 +1,9 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import TextField from '@mui/material/TextField';
 
-export default function TextFields() {
-
-    const [text, SetText] = useState('')
+export default function TextFields(props) {
 
     return (
-        <TextField id="long-url" label="Enter a long URL" variant="outlined" value={text} sx={{ width: 400, mx: 5 }} />
+        <TextField id="long-url" label="Enter a long URL" variant="outlined" value={props.text} onChange={props.handleChange} sx={{ width: 400, mx: 5 }} />
     );
 }
