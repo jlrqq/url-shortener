@@ -1,11 +1,12 @@
 var mysql = require('mysql2');
 
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  port: 8889,
-  database: process.env.NODE_ENV === 'test' ? 'test_database' : 'url_shortener'
+  host: "us-cdbr-east-06.cleardb.net",
+  user: "bcd501d7fa1cba",
+  password: "f0449516",
+  // port: 8889,
+  // database: process.env.NODE_ENV === 'test' ? 'test_database' : 'url_shortener'
+  database: "heroku_34ac065506ec321"
 });
 
 connection.connect(function(err) {
@@ -13,6 +14,7 @@ connection.connect(function(err) {
   console.log("Database is connected!");
 });
 
+mysql://bcd501d7fa1cba:f0449516@us-cdbr-east-06.cleardb.net/heroku_34ac065506ec321?reconnect=true
 
 // const db = new sqlite3.Database('./test.db', (err) => {
 //   if (err) {

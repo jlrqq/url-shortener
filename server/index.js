@@ -1,20 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require("cors");
-const productionDB = require('./config/connection');
-const sqlite3 = require('sqlite3').verbose();
-const testDB = new sqlite3.Database('./test.db');
+const connectDb = require('./config/connection');
+// const sqlite3 = require('sqlite3').verbose();
+// const testDB = new sqlite3.Database('./test.db');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-var connectDb = null;
-if (process.env.NODE_ENV === 'test') {
-    connectDb = testDB;
-} else {
-    connectDb = productionDB;
-}
+const PORT = 5000;
+
+// var connectDb = null;
+// if (process.env.NODE_ENV === 'test') {
+//     connectDb = testDB;
+// } else {
+//     connectDb = productionDB;
+// }
 
 // Route to shorten a URL
 app.post('/shorten', (req, res) => {
@@ -63,6 +65,6 @@ app.get('/:shortCode', (req, res) => {
   });
   
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log('App listening on port 5000');
 });

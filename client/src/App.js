@@ -54,7 +54,7 @@ function App() {
   const handleClick = () => {
     console.log(text);
 
-    axios.post('http://localhost:5000/shorten', {
+    axios.post('https://cut-link-shortener.herokuapp.com/shorten', {
       url: text,
     })
     .then(function (response) {
@@ -73,7 +73,7 @@ function App() {
   const handleUrl = async (shortCode) => {
 
     try {
-      const response = await axios.get(`http://localhost:5000/${shortCode}`);
+      const response = await axios.get(`https://cut-link-shortener.herokuapp.com/${shortCode}`);
       console.log(response);
       if (response.status === 200) {
         console.log(response.data.longUrl);
