@@ -1,0 +1,11 @@
+DROP SCHEMA IF EXISTS url_shortener;
+CREATE SCHEMA url_shortener;
+USE url_shortener;
+
+DROP TABLE IF EXISTS urls;
+CREATE TABLE IF NOT EXISTS urls (
+id int NOT NULL AUTO_INCREMENT,
+long_url VARCHAR(1000) NOT NULL,
+short_code VARCHAR(20) NOT NULL,
+PRIMARY KEY (id)
+);
