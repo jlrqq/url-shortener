@@ -10,3 +10,10 @@ A URL Shortener to shorten links for easy dissemination.
 | root | npm install |
 | cd client  | npm install |
 | cd server | npm install |
+
+## Run The App:
+
+| Path  | Command |
+| ------------- | ------------- |
+| cd client  | npm start |
+| cd server | node index.js |
