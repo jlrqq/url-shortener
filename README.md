@@ -1,7 +1,16 @@
-<h2 align='center'>Cut Link - URL Shortener </h2>
+<h2 align='center'>✂️ Cut Link - URL Shortener ✂️</h2>
 
 ## Description:
 A URL Shortener to shorten links for easy dissemination. 
+
+## Tech Stacks:
+| Stack | Purpose |
+| ------------- | ------------- |
+| React.js | Frontend |
+| Material UI  | UI Library |
+| Node.js | Backend |
+| SQL | Database |
+
 
 ## Step 1: Install Packages & Dependencies:
 
